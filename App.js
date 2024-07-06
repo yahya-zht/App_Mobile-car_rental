@@ -5,11 +5,12 @@ import CarCard from "./components/CarCard";
 import CarDetails from "./screens/CarDetails";
 import Home from "./screens/Home";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import Router from "./routes/Router";
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" hidden />
-      <Home />
+      <Router />
     </SafeAreaView>
   );
 }
@@ -17,8 +18,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
     backgroundColor: "#27262b",
   },
 });
