@@ -7,6 +7,7 @@ import Favorites from "../screens/Favorites";
 import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
 import Booking from "../screens/Booking";
+import Profile from "../screens/Profile";
 
 export default function Router() {
   const Stack = createStackNavigator();
@@ -45,6 +46,13 @@ export default function Router() {
           component={SignUp}
           options={{
             title: "SignUp",
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            title: "Profile",
           }}
         />
         <Stack.Screen

@@ -35,7 +35,10 @@ export default function NavBar() {
           <Text style={{ color: "gray", fontWeight: "bold" }}>booking</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Profile")}
+      >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <Feather name="user" size={24} color="gray" />
           <Text style={{ color: "gray", fontWeight: "bold" }}>Profile</Text>
