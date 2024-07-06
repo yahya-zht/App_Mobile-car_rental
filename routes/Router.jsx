@@ -6,6 +6,7 @@ import Home from "../screens/Home";
 import Favorites from "../screens/Favorites";
 import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
+import Booking from "../screens/Booking";
 
 export default function Router() {
   const Stack = createStackNavigator();
@@ -44,6 +45,13 @@ export default function Router() {
           component={SignUp}
           options={{
             title: "SignUp",
+          }}
+        />
+        <Stack.Screen
+          name="Booking"
+          component={Booking}
+          options={{
+            title: "Booking",
           }}
         />
       </Stack.Navigator>

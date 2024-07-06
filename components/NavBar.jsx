@@ -3,6 +3,7 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 export default function NavBar() {
   const navigation = useNavigation();
   return (
@@ -25,10 +26,13 @@ export default function NavBar() {
           <Text style={{ color: "gray", fontWeight: "bold" }}>Favorites</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Booking")}
+      >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <AntDesign name="shoppingcart" size={24} color="gray" />
-          <Text style={{ color: "gray", fontWeight: "bold" }}>Cart</Text>
+          <MaterialIcons name="date-range" size={24} color="gray" />
+          <Text style={{ color: "gray", fontWeight: "bold" }}>booking</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
