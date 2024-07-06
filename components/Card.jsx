@@ -25,7 +25,6 @@ export default function Card() {
           />
         </View>
       </View>
-
       <View style={styles.details}>
         <MaterialIcons name="directions-car" size={20} color="white" />
         <Text style={styles.detailText}>Automatic</Text>
