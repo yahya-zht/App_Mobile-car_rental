@@ -1,0 +1,78 @@
+[
+  {
+    "logo": "BMW",
+    "image": "../assets/Logo_Brand/bmw.png"
+  },
+  {
+    "logo": "audi",
+    "image": "../assets/Logo_Brand/audi.png"
+  },
+  {
+    "logo": "ford",
+    "image": "../assets/Logo_Brand/ford.png"
+  },
+  {
+    "logo": "fr",
+    "image": "../assets/Logo_Brand/fr.png"
+  },
+  {
+    "logo": "golf",
+    "image": "../assets/Logo_Brand/golf.png"
+  },
+  {
+    "logo": "jaguar",
+    "image": "../Logo_Brand/jaguar.png"
+  },
+  {
+    "logo": "lambo",
+    "image": "../Logo_Brand/lambo.png"
+  },
+  {
+    "logo": "fr",
+    "image": "../Logo_Brand/fr.png"
+  },
+  {
+    "logo": "golf",
+    "image": "../Logo_Brand/golf.png"
+  },
+  {
+    "logo": "jaguar",
+    "image": "../Logo_Brand/jaguar.png"
+  },
+  {
+    "logo": "lambo",
+    "image": "../Logo_Brand/lambo.png"
+  },
+  {
+    "logo": "Mazda",
+    "image": "../Logo_Brand/Mazda.png"
+  },
+  {
+    "logo": "mercedes-benz",
+    "image": "../Logo_Brand/mercedes-benz.png"
+  },
+  {
+    "logo": "mini-cooper",
+    "image": "../Logo_Brand/mini-cooper.png"
+  },
+  {
+    "logo": "Nissan",
+    "image": "../Logo_Brand/Nissan.png"
+  },
+  {
+    "logo": "opel",
+    "image": "../Logo_Brand/opel.png"
+  },
+  {
+    "logo": "skoda",
+    "image": "../Logo_Brand/skoda.png"
+  },
+  {
+    "logo": "toyota",
+    "image": "../Logo_Brand/toyota.png"
+  },
+  {
+    "logo": "volvo",
+    "image": "../Logo_Brand/volvo.png"
+  }
+]
