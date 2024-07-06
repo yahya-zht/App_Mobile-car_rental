@@ -18,10 +18,34 @@ export default function Router() {
           animation: "none",
         }}
       >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Favorites" component={Favorites} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "Home",
+          }}
+        />
+        <Stack.Screen
+          name="Favorites"
+          component={Favorites}
+          options={{
+            title: "Favorites",
+          }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: "Login",
+          }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{
+            title: "SignUp",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
