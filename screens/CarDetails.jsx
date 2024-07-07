@@ -10,14 +10,28 @@ import {
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import {
+  AddToBooking,
+  ADDTOFavorites,
+  AddToFavorites,
+} from "../reducers/Action";
 const { width: viewportWidth } = Dimensions.get("window");
 
 export default function CarDetails({ route, navigation }) {
+  const dispatch = useDispatch();
   const { CarData } = route.params;
-  // console.log("CarData Tout =>", CarData);
+  const handleAddTOFavorites = () => {
+    dispatch(AddToFavorites(CarData));
+    alert("Car added to favorites");
+  };
+  const handleAddTOBooking = () => {
+    dispatch(AddToBooking(CarData));
+    alert("Car added to Booking");
+  };
   const renderItem = ({ item }) => (
-    // <Image source={{ uri: item.uri }} style={styles.carouselImage} />
     <Image source={item} style={styles.carouselImage} />
+    // <Image source={{ uri: item.uri }} style={styles.carouselImage} />
   );
   const pressHandler = () => {
     navigation.goBack();
@@ -33,14 +47,15 @@ export default function CarDetails({ route, navigation }) {
         <TouchableOpacity
           style={{
             padding: 10,
-            borderColor: "red",
-            borderWidth: 2,
-            borderRadius: 30,
-            justifyContent: "center",
-            alignItems: "center",
+            // borderColor: "red",
+            // borderWidth: 2,
+            // borderRadius: 30,
+            // justifyContent: "center",
+            // alignItems: "center",
           }}
+          onPress={handleAddTOFavorites}
         >
-          <AntDesign name="hearto" size={24} color="red" />
+          <AntDesign name="hearto" size={30} color="white" />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -89,7 +104,7 @@ export default function CarDetails({ route, navigation }) {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleAddTOBooking}>
         <Text style={styles.buttonText}>Book Now</Text>
       </TouchableOpacity>
     </View>

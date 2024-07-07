@@ -4,8 +4,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import SearchCar from "../components/SearchCar";
 import CardCar from "../components/CardCar";
 import NavBar from "../components/NavBar";
+import { useSelector } from "react-redux";
 
 export default function Booking() {
+  const DataBooking = useSelector((state) => state.Booking);
   return (
     <View style={styles.container}>
       <View
@@ -27,7 +29,27 @@ export default function Booking() {
       </View>
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <CardCar />
+          {DataBooking.length > 0 ? (
+            DataBooking.map((c, i) => (
+              <CardCar
+                key={i}
+                brand={c.brand}
+                image={c.image}
+                price={c.price}
+                model={c.model}
+                year={c.year}
+                transmission={c.transmission}
+                seats={c.seats}
+                doors={c.doors}
+                fuelType={c.fuelType}
+                rating={c.rating}
+                description={c.description}
+                images={c.images}
+              />
+            ))
+          ) : (
+            <Text style={{ color: "white", fontSize: 16 }}>No Booking yet</Text>
+          )}
         </ScrollView>
       </View>
       <View style={{ height: 60 }}>

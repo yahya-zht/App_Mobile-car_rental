@@ -9,7 +9,7 @@ export default function CardCar(props) {
 
   const pressHandler = () => {
     // console.log("props => ", props);
-    console.log("CarData => ", CarData);
+    // console.log("CarData => ", CarData);
     navigation.navigate("CarDetails", { CarData });
   };
   return (

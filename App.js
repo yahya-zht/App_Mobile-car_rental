@@ -1,12 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet } from "react-native";
 import Router from "./routes/Router";
+import { Provider } from "react-redux";
+import store from "./reducers/Store";
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="light" hidden />
-      <Router />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <StatusBar style="light" hidden />
+        <Router />
+      </SafeAreaView>
+    </Provider>
   );
 }
 
