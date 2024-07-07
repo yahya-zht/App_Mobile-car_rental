@@ -2,16 +2,12 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
+import image from "../assets/profile/avatar03.jpeg";
 export default function TopPage() {
   return (
     <View style={styles.container}>
       <View style={styles.imgProfile}>
-        <Image
-          source={{
-            uri: "https://lifeonfour.co/wp-content/uploads/2022/03/Mercedes-Benz_C200_AVANTGARDE_W205_front.webp",
-          }}
-          style={styles.img}
-        />
+        <Image source={image} style={styles.img} />
       </View>
       <View style={styles.from}>
         <Fontisto name="map-marker-alt" size={20} color="white" />

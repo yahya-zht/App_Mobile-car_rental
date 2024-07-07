@@ -1,8 +1,17 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Card() {
+export default function CardCar(props) {
+  const navigation = useNavigation();
+  const CarData = props;
+
+  const pressHandler = () => {
+    // console.log("props => ", props);
+    console.log("CarData => ", CarData);
+    navigation.navigate("CarDetails", { CarData });
+  };
   return (
     <View style={styles.card}>
       <View style={{ flexDirection: "row" }}>
@@ -10,33 +19,28 @@ export default function Card() {
           <View style={styles.topRow}>
             <View style={styles.rating}>
               <FontAwesome name="star" size={16} color="gold" />
-              <Text style={styles.ratingText}>4.5</Text>
+              <Text style={styles.ratingText}>{props.rating}</Text>
             </View>
           </View>
-          <Text style={styles.title}>Tesla Model S</Text>
-          <Text style={styles.year}>2024</Text>
+          <Text style={styles.title}>{props.brand}</Text>
+          <Text style={styles.year}>{props.year}</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Image
-            source={{
-              uri: "https://platform.cstatic-images.com/large/in/v2/stock_photos/af62d38b-ae53-46c1-b2cf-91b77299eed4/9e8d9674-2433-4fa7-8fb2-4fdac6abaaf8.png",
-            }}
-            style={styles.carImage}
-          />
+          <Image source={props.image} style={styles.carImage} />
         </View>
       </View>
       <View style={styles.details}>
         <MaterialIcons name="directions-car" size={20} color="white" />
-        <Text style={styles.detailText}>Automatic</Text>
+        <Text style={styles.detailText}>{props.transmission}</Text>
         <MaterialIcons
           name="airline-seat-recline-normal"
           size={20}
           color="white"
         />
-        <Text style={styles.detailText}>5 Seats</Text>
+        <Text style={styles.detailText}>{props.seats} Seats</Text>
       </View>
-      <Text style={styles.price}>$500.00/day</Text>
-      <TouchableOpacity style={styles.button}>
+      <Text style={styles.price}>${props.price}.00/day</Text>
+      <TouchableOpacity style={styles.button} onPress={pressHandler}>
         <MaterialIcons name="arrow-forward" size={24} color="black" />
       </TouchableOpacity>
     </View>

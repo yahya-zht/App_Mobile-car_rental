@@ -9,37 +9,38 @@ import {
   Dimensions,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-
+import { AntDesign } from "@expo/vector-icons";
 const { width: viewportWidth } = Dimensions.get("window");
 
-const carImages = [
-  {
-    uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/2016_Mercedes-Benz_C_300_%28C_205%29_coupe_%282018-04-17%29_01.jpg/1280px-2016_Mercedes-Benz_C_300_%28C_205%29_coupe_%282018-04-17%29_01.jpg",
-  },
-  {
-    uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/2017_Mercedes-Benz_C_200_%28W_205%29_sedan_%282018-08-31%29_01.jpg/1024px-2017_Mercedes-Benz_C_200_%28W_205%29_sedan_%282018-08-31%29_01.jpg",
-  },
-  {
-    uri: "https://lifeonfour.co/wp-content/uploads/2022/03/Mercedes-Benz_C200_AVANTGARDE_W205_front.webp",
-  },
-  {
-    uri: "https://img.icarcdn.com/autospinn-my/body/7865-2015-mercedes-benz-c-250-exclulsive-full-review-2.jpg",
-  },
-];
-
-export default function CarDetails() {
+export default function CarDetails({ route, navigation }) {
+  const { CarData } = route.params;
+  // console.log("CarData Tout =>", CarData);
   const renderItem = ({ item }) => (
-    <Image source={{ uri: item.uri }} style={styles.carouselImage} />
+    // <Image source={{ uri: item.uri }} style={styles.carouselImage} />
+    <Image source={item} style={styles.carouselImage} />
   );
+  const pressHandler = () => {
+    navigation.goBack();
+  };
+  const carImages = [...CarData.images, CarData.image].reverse();
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
-          <FontAwesome name="arrow-left" size={24} color="white" />
+        <TouchableOpacity onPress={pressHandler} style={{ padding: 10 }}>
+          <AntDesign name="arrowleft" size={30} color="white" />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="info-circle" size={24} color="white" />
+        <TouchableOpacity
+          style={{
+            padding: 10,
+            borderColor: "red",
+            borderWidth: 2,
+            borderRadius: 30,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <AntDesign name="hearto" size={24} color="red" />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -57,28 +58,34 @@ export default function CarDetails() {
           data={carImages}
           horizontal
           renderItem={({ item }) => (
-            <Image source={{ uri: item.uri }} style={styles.thumbnail} />
+            // <Image source={{ uri: item.uri }} style={styles.thumbnail} />
+            <Image source={item} style={styles.thumbnail} />
           )}
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Mercedes SL 63 AMG</Text>
+        <Text style={styles.title}>{CarData.brand}</Text>
         <View style={styles.priceContainer}>
-          <Text style={styles.price}>2500 AED/day</Text>
+          <Text style={styles.price}>${CarData.price}.00/day</Text>
         </View>
-        <Text style={styles.description}>
-          The Mercedes SL 63 AMG is a sports car created using advanced
-          technologies that have made it incredibly fast and powerful.
-        </Text>
+        <Text style={styles.description}>{CarData.description}</Text>
         <View style={styles.specificationsContainer}>
           <View style={styles.specification}>
             <FontAwesome name="tachometer" size={24} color="white" />
             <Text style={styles.specificationText}>585 hp</Text>
           </View>
           <View style={styles.specification}>
+            <MaterialIcons
+              name="airline-seat-recline-normal"
+              size={24}
+              color="white"
+            />
+            <Text style={styles.specificationText}>{CarData.seats} Seats</Text>
+          </View>
+          <View style={styles.specification}>
             <MaterialIcons name="directions-car" size={24} color="white" />
-            <Text style={styles.specificationText}>Automatic</Text>
+            <Text style={styles.specificationText}>{CarData.transmission}</Text>
           </View>
         </View>
       </View>
@@ -92,22 +99,24 @@ export default function CarDetails() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0A0A0A",
+    backgroundColor: "#27262b",
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
+    padding: 10,
   },
   carouselImage: {
     width: viewportWidth,
-    height: 250,
+    height: 210,
+    padding: 20,
+    // backgroundColor: "blue",
     resizeMode: "cover",
   },
   thumbnailContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginVertical: 10,
+    // backgroundColor: "red",
   },
   thumbnail: {
     width: 70,
@@ -155,15 +164,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   button: {
-    backgroundColor: "#005CEE",
+    backgroundColor: "#c2fa00",
     paddingVertical: 15,
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 10,
     marginHorizontal: 20,
     marginBottom: 20,
   },
   buttonText: {
-    color: "white",
+    color: "black",
     fontSize: 18,
     fontWeight: "bold",
   },

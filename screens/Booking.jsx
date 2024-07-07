@@ -2,8 +2,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import SearchCar from "../components/SearchCar";
-import CarCard from "../components/CarCard";
-import Card from "../components/Card";
+import CardCar from "../components/CardCar";
 import NavBar from "../components/NavBar";
 
 export default function Booking() {
@@ -28,7 +27,7 @@ export default function Booking() {
       </View>
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <Card />
+          <CardCar />
         </ScrollView>
       </View>
       <View style={{ height: 60 }}>

@@ -3,8 +3,8 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import { MaterialIcons } from "@expo/vector-icons";
 import SearchCar from "../components/SearchCar";
-import Card from "../components/Card";
-
+import CardCar from "../components/CardCar";
+const L = [1, 2, 3, 4, 5];
 export default function Favorites() {
   return (
     <View style={styles.container}>
@@ -27,11 +27,11 @@ export default function Favorites() {
       </View>
       <ScrollView>
         <View style={{ flex: 1 }}>
+          {L.map((i) => (
+            <CardCar key={i} />
+          ))}
           {/* <Text style={{ color: "white", fontSize: 16 }}>No favorites yet</Text> */}
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <CardCar />
         </View>
       </ScrollView>
       <View style={{ height: 60 }}>

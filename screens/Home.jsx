@@ -1,14 +1,21 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import React from "react";
-import CarCard from "../components/CarCard";
 import TopPage from "../components/TopPage";
 import SearchCar from "../components/SearchCar";
 import BrandCar from "../components/BrandCar";
 import ListCars from "../components/ListCars";
 import NavBar from "../components/NavBar";
 
-export default function Home(props) {
+export default function Home() {
   return (
+    // <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     <View style={styles.container}>
       <TopPage />
       <View style={{ flex: 1 }}>
@@ -28,6 +35,7 @@ export default function Home(props) {
         <NavBar />
       </View>
     </View>
+    // </TouchableWithoutFeedback>
   );
 }
 const styles = StyleSheet.create({

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 
-const CarCard = () => {
+const CarCardTest = () => {
   return (
     <View style={styles.card}>
       <View style={styles.topRow}>
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CarCard;
+export default CarCardTest;

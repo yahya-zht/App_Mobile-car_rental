@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import image from "../assets/profile/avatar03.jpeg";
 export default function Profile() {
   return (
     <View style={styles.container}>
@@ -35,12 +36,7 @@ export default function Profile() {
         >
           <View>
             <View style={styles.imgProfile}>
-              <Image
-                source={{
-                  uri: "https://lifeonfour.co/wp-content/uploads/2022/03/Mercedes-Benz_C200_AVANTGARDE_W205_front.webp",
-                }}
-                style={styles.img}
-              />
+              <Image source={image} style={styles.img} />
             </View>
           </View>
           <View>

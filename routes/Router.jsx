@@ -8,6 +8,7 @@ import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
 import Booking from "../screens/Booking";
 import Profile from "../screens/Profile";
+import CarDetails from "../screens/CarDetails";
 
 export default function Router() {
   const Stack = createStackNavigator();
@@ -60,6 +61,13 @@ export default function Router() {
           component={Booking}
           options={{
             title: "Booking",
+          }}
+        />
+        <Stack.Screen
+          name="CarDetails"
+          component={CarDetails}
+          options={{
+            title: "CarDetails",
           }}
         />
       </Stack.Navigator>

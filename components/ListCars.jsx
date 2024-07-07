@@ -1,13 +1,9 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
-import CarCard from "./CarCard";
-import Card from "./Card";
-
+import Card from "./CardCar";
+import CarsData from "../assets/DataBase/Cars";
+import { FlashList } from "@shopify/flash-list";
 export default function ListCars() {
-  const L = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25,
-  ];
   return (
     <View>
       <View
@@ -23,9 +19,42 @@ export default function ListCars() {
         </Text>
         <Text style={{ color: "#c2fa00", fontSize: 16 }}>See All</Text>
       </View>
+      {/* <FlashList
+        data={CarsData}
+        renderItem={({ item }) => (
+          <Card
+            brand={item.brand}
+            image={item.image}
+            price={item.price}
+            model={item.model}
+            year={item.year}
+            transmission={item.transmission}
+            seats={item.seats}
+            doors={item.doors}
+            fuelType={item.fuelType}
+            rating={item.rating}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+        estimatedItemSize={200}
+      /> */}
       <View>
-        {L.map((i) => (
-          <Card key={i} />
+        {CarsData.map((c, i) => (
+          <Card
+            key={i}
+            brand={c.brand}
+            image={c.image}
+            price={c.price}
+            model={c.model}
+            year={c.year}
+            transmission={c.transmission}
+            seats={c.seats}
+            doors={c.doors}
+            fuelType={c.fuelType}
+            rating={c.rating}
+            description={c.description}
+            images={c.images}
+          />
         ))}
       </View>
     </View>

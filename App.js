@@ -1,10 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-// import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
-import CarCard from "./components/CarCard";
-import CarDetails from "./screens/CarDetails";
-import Home from "./screens/Home";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { SafeAreaView, StyleSheet } from "react-native";
 import Router from "./routes/Router";
 export default function App() {
   return (
