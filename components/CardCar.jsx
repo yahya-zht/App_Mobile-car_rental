@@ -2,13 +2,24 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { RemoveFromBooking, RemoveFromFavorites } from "../reducers/Action";
 
 export default function CardCar(props) {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const CarData = props;
   const pressHandler = () => {
     navigation.navigate("CarDetails", { CarData });
   };
+  const RemoveHandlerFavorite = () => {
+    dispatch(RemoveFromFavorites(CarData.id));
+  };
+  const RemoveHandlerBooking = () => {
+    dispatch(RemoveFromBooking(CarData.id));
+  };
+  const showRemoveButtonFavorite = CarData.showRemoveButtonFavorite;
+  const showRemoveButtonBooking = CarData.showRemoveButtonBooking;
   return (
     <View style={styles.card}>
       <View style={{ flexDirection: "row" }}>
@@ -40,6 +51,22 @@ export default function CardCar(props) {
       <TouchableOpacity style={styles.button} onPress={pressHandler}>
         <MaterialIcons name="arrow-forward" size={24} color="black" />
       </TouchableOpacity>
+      {showRemoveButtonFavorite && (
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={RemoveHandlerFavorite}
+        >
+          <MaterialIcons name="delete" size={24} color="black" />
+        </TouchableOpacity>
+      )}
+      {showRemoveButtonBooking && (
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={RemoveHandlerBooking}
+        >
+          <MaterialIcons name="delete" size={24} color="black" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -105,5 +132,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
+  },
+  deleteButton: {
+    backgroundColor: "#ff0000",
+    padding: 10,
+    position: "absolute",
+    bottom: 20,
+    right: 80,
+    borderRadius: 50,
   },
 });

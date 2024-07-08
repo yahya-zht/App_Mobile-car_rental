@@ -25,7 +25,7 @@ const ReducerFavorites = (state = initialState, action) => {
       }
       return state;
     case REMOVEFROMFavorites:
-      const { idF } = action.payload;
+      const idF = action.payload;
       return {
         ...state,
         Favorites: state.Favorites.filter((item) => item.id !== idF),
@@ -36,7 +36,7 @@ const ReducerFavorites = (state = initialState, action) => {
       }
       return state;
     case REMOVEFROMBooking:
-      const { idB } = action.payload;
+      const idB = action.payload;
       return {
         ...state,
         Booking: state.Booking.filter((item) => item.id !== idB),

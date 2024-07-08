@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,6 +18,9 @@ export default function Booking({ navigation }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBooking, setFilteredBooking] = useState(DataBooking);
 
+  useEffect(() => {
+    setFilteredBooking(DataBooking);
+  }, [DataBooking]);
   const handleBooking = () => {
     // Handle booking action
   };
@@ -51,6 +54,7 @@ export default function Booking({ navigation }) {
             renderItem={({ item }) => (
               <CardCar
                 id={item.id}
+                showRemoveButtonBooking={true}
                 brand={item.brand}
                 image={item.image}
                 price={item.price}

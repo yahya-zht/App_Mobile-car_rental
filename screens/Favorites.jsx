@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -12,6 +12,9 @@ export default function Favorites() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredFavorites, setFilteredFavorites] = useState(DataFavorites);
 
+  useEffect(() => {
+    setFilteredFavorites(DataFavorites);
+  }, [DataFavorites]);
   const handleSearch = (text) => {
     setSearchTerm(text);
     if (text === "") {
@@ -42,6 +45,8 @@ export default function Favorites() {
           data={filteredFavorites}
           renderItem={({ item }) => (
             <CardCar
+              showRemoveButtonFavorite={true}
+              id={item.id}
               brand={item.brand}
               image={item.image}
               price={item.price}
