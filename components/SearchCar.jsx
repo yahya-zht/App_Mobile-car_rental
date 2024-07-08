@@ -1,24 +1,37 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
+import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
-export default function SearchCar() {
+export default function SearchCar(props) {
+  const [searchTerm, setSearchTerm] = useState(searchTerm);
+
   return (
-    <View style={styles.container}>
+    <View style={styles.searchContainer}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <AntDesign name="search1" size={22} color="gray" />
-        <Text style={{ color: "gray", marginStart: 10 }}>Search...</Text>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          value={searchTerm}
+          onChangeText={props.onSearch}
+        />
       </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    // backgroundColor: "white",
-    padding: 10,
+  searchContainer: {
+    marginHorizontal: 15,
+    paddingVertical: 3,
+    paddingHorizontal: 10,
     borderWidth: 2,
     borderColor: "gray",
     marginBottom: 10,
     borderRadius: 10,
-    margin: 10,
+    marginBottom: 10,
+  },
+  searchInput: {
+    flex: 1,
+    color: "gray",
+    marginLeft: 10,
   },
 });

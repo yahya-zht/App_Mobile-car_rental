@@ -3,6 +3,7 @@ const REMOVEFROMFavorites = "REMOVEFavorites";
 const ADDTOBooking = "ADDBooking";
 const REMOVEFROMBooking = "REMOVEBooking";
 const REMOVEALLFROMBooking = "REMOVEALLFROMBooking";
+const SELECTEDBRAND = "SELECTEDBRAND";
 const AddToFavorites = (newF) => ({
   type: ADDTOFavorites,
   payload: newF,
@@ -25,6 +26,10 @@ const RemoveFromBooking = (Rm) => ({
 const RemoveAllFromBooking = () => ({
   type: REMOVEALLFROMBooking,
 });
+const SelectedBrand = (Brand) => ({
+  type: SELECTEDBRAND,
+  payload: Brand,
+});
 
 export {
   ADDTOFavorites,
@@ -37,4 +42,6 @@ export {
   RemoveFromBooking,
   REMOVEALLFROMBooking,
   RemoveAllFromBooking,
+  SelectedBrand,
+  SELECTEDBRAND,
 };

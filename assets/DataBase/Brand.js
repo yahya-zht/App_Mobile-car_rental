@@ -15,26 +15,32 @@ import miniCooper from "../Logo_Brand/mini-cooper.png";
 import mercedes from "../Logo_Brand/mercedes-benz.png";
 const Date = [
   {
+    NameBrand: "BMW",
     logo: "BMW",
     image: bmw,
   },
   {
+    NameBrand: "Audi",
     logo: "audi",
     image: audi,
   },
   {
+    NameBrand: "Ford",
     logo: "ford",
     image: ford,
   },
   {
+    NameBrand: "Ferrari",
     logo: "ferrari",
     image: ferrari,
   },
   {
+    NameBrand: "Vog",
     logo: "golf",
     image: golf,
   },
   {
+    NameBrand: "Jaguar",
     logo: "jaguar",
     image: jaguar,
   },

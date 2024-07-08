@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -15,11 +15,26 @@ import NavBar from "../components/NavBar";
 
 export default function Booking({ navigation }) {
   const DataBooking = useSelector((state) => state.Booking);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredBooking, setFilteredBooking] = useState(DataBooking);
 
   const handleBooking = () => {
     // Handle booking action
   };
 
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    if (text === "") {
+      setFilteredBooking(DataBooking); // Reset to original data if search term is empty
+    } else {
+      const filtered = DataBooking.filter(
+        (item) =>
+          item.brand.toLowerCase().includes(text.toLowerCase()) ||
+          item.model.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredBooking(filtered);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -28,11 +43,11 @@ export default function Booking({ navigation }) {
           <MaterialIcons name="notifications-none" size={27} color="gray" />
         </View>
       </View>
-      <SearchCar />
+      <SearchCar onSearch={handleSearch} />
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.listContainer}>
           <FlashList
-            data={DataBooking}
+            data={filteredBooking}
             renderItem={({ item }) => (
               <CardCar
                 id={item.id}

@@ -1,28 +1,56 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Keyboard,
-  TouchableWithoutFeedback,
-  FlatList,
-} from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import CardCar from "../components/CardCar";
-import CarsData from "../assets/DataBase/Cars";
 import { FlashList } from "@shopify/flash-list";
 import TopPage from "../components/TopPage";
-import SearchCar from "../components/SearchCar";
 import BrandCar from "../components/BrandCar";
 import NavBar from "../components/NavBar";
+import SearchCar from "../components/SearchCar";
+import { SelectedBrand as SelectedB } from "../reducers/Action";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home({ route }) {
+  const dispatch = useDispatch();
   const { message } = route.params || {};
+  const [searchTerm, setSearchTerm] = useState("");
+  const CarsData = useSelector((state) => state.CarsData);
+  const SelectedBrand = useSelector((state) => state.SelectedBrand);
+  const [filteredCars, setFilteredCars] = useState(CarsData);
+  useEffect(() => {
+    if (SelectedBrand.length > 0) {
+      setFilteredCars(SelectedBrand);
+    } else {
+      setFilteredCars(CarsData);
+    }
+  }, [SelectedBrand, CarsData]);
+
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    if (text === "") {
+      setFilteredCars(CarsData);
+    } else {
+      const filtered = CarsData.filter(
+        (car) =>
+          car.brand.toLowerCase().includes(text.toLowerCase()) ||
+          car.model.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredCars(filtered);
+    }
+  };
+  const handleAll = () => {
+    setFilteredCars(CarsData);
+    setSearchTerm("");
+    dispatch(SelectedB(""));
+  };
+
   return (
     <View style={styles.container}>
       <TopPage />
-      <View style={{ flex: 1 }}>
+      <SearchCar onSearch={handleSearch} />
+
+      <View style={{ flex: 1, paddingHorizontal: 15 }}>
         <FlashList
-          data={CarsData}
+          data={filteredCars}
           renderItem={({ item }) => (
             <CardCar
               id={item.id}
@@ -44,26 +72,23 @@ export default function Home({ route }) {
           estimatedItemSize={200}
           ListHeaderComponent={() => (
             <>
-              <View>
-                <Text style={styles.greeting}>
-                  Hello,
-                  <Text style={styles.username}> Yahya</Text>
-                </Text>
-                {/* <Text>{message && message}</Text> */}
-                {/* <Text>{message || ""}</Text> */}
-                {message ? (
-                  <View style={styles.containerMessage}>
-                    <Text style={styles.messageText}>{message}</Text>
-                  </View>
-                ) : (
-                  ""
-                )}
-              </View>
-              <SearchCar />
+              <Text style={styles.greeting}>
+                Hello,
+                <Text style={styles.username}> Yahya</Text>
+              </Text>
+              {message ? (
+                <View style={styles.containerMessage}>
+                  <Text style={styles.messageText}>{message}</Text>
+                </View>
+              ) : (
+                ""
+              )}
               <BrandCar />
               <View style={styles.popularHeader}>
                 <Text style={styles.title}>Popular</Text>
-                <Text style={styles.seeAll}>See All</Text>
+                <TouchableOpacity onPress={handleAll}>
+                  <Text style={styles.seeAll}>See All</Text>
+                </TouchableOpacity>
               </View>
             </>
           )}
@@ -81,7 +106,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#27262b",
-    paddingHorizontal: 15,
   },
   greeting: {
     color: "gray",
@@ -96,7 +120,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 10,
-    paddingHorizontal: 10,
   },
   title: {
     color: "white",
@@ -108,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   containerMessage: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 7,

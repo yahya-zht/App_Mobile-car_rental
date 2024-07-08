@@ -4,9 +4,13 @@ import {
   ADDTOBooking,
   REMOVEFROMBooking,
   REMOVEALLFROMBooking,
+  SELECTEDBRAND,
 } from "./Action";
+import CarsData from "../assets/DataBase/Cars";
 
 const initialState = {
+  CarsData: CarsData,
+  SelectedBrand: [],
   Favorites: [],
   Booking: [],
 };
@@ -41,6 +45,18 @@ const ReducerFavorites = (state = initialState, action) => {
       return {
         ...state,
         Booking: [],
+      };
+    case SELECTEDBRAND:
+      const b = action.payload;
+      const filtered = state.CarsData.filter(
+        (car) =>
+          car.brand.toLowerCase().includes(b.toLowerCase()) ||
+          car.model.toLowerCase().includes(b.toLowerCase())
+      );
+      console.log("filtered = = = = = = =  =>", filtered);
+      return {
+        ...state,
+        SelectedBrand: filtered,
       };
     default:
       return state;

@@ -5,7 +5,12 @@ import Brand from "./Brand";
 import Data from "../assets/DataBase/Brand.js";
 
 const brandList = Data.map((brand, index) => (
-  <Brand key={index} logoName={brand.logo} image={brand.image} />
+  <Brand
+    key={index}
+    logoName={brand.logo}
+    image={brand.image}
+    NameBrand={brand.NameBrand}
+  />
 ));
 export default function BrandCar() {
   return (

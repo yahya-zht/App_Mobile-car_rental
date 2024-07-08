@@ -13,6 +13,7 @@ export default function Profile() {
           flexDirection: "row",
           justifyContent: "space-between",
           paddingVertical: 10,
+          paddingHorizontal: 15,
         }}
       >
         <Text style={{ color: "white", fontSize: 20, fontWeight: "bold" }}>
@@ -22,7 +23,7 @@ export default function Profile() {
           <MaterialIcons name="notifications-none" size={27} color="gray" />
         </View>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, paddingHorizontal: 15 }}>
         <View
           style={{
             paddingVertical: 10,
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#27262b",
-    paddingHorizontal: 15,
   },
   imgProfile: {
     justifyContent: "center",

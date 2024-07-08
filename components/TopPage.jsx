@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 10,
+    paddingHorizontal: 15,
   },
   from: {
     flex: 1,

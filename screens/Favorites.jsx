@@ -1,14 +1,30 @@
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import React from "react";
-import NavBar from "../components/NavBar";
+import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import SearchCar from "../components/SearchCar";
-import CardCar from "../components/CardCar";
 import { useSelector } from "react-redux";
 import { FlashList } from "@shopify/flash-list";
+import SearchCar from "../components/SearchCar";
+import CardCar from "../components/CardCar";
+import NavBar from "../components/NavBar";
 
 export default function Favorites() {
   const DataFavorites = useSelector((state) => state.Favorites);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredFavorites, setFilteredFavorites] = useState(DataFavorites);
+
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    if (text === "") {
+      setFilteredFavorites(DataFavorites); // Reset to original data if search term is empty
+    } else {
+      const filtered = DataFavorites.filter(
+        (item) =>
+          item.brand.toLowerCase().includes(text.toLowerCase()) ||
+          item.model.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredFavorites(filtered);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -19,11 +35,11 @@ export default function Favorites() {
         </View>
       </View>
       <View>
-        <SearchCar />
+        <SearchCar onSearch={handleSearch} />
       </View>
       <View style={styles.listContainer}>
         <FlashList
-          data={DataFavorites}
+          data={filteredFavorites}
           renderItem={({ item }) => (
             <CardCar
               brand={item.brand}
@@ -58,11 +74,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#27262b",
-    paddingHorizontal: 15,
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingHorizontal: 15,
     paddingVertical: 10,
   },
   headerText: {
@@ -74,6 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   listContainer: {
+    paddingHorizontal: 15,
     flex: 1,
   },
   emptyText: {
