@@ -1,5 +1,4 @@
 import { AntDesign } from "@expo/vector-icons";
-
 import React, { useState } from "react";
 import { View, Text, Switch, StyleSheet, TouchableOpacity } from "react-native";
 import { Calendar } from "react-native-calendars";
