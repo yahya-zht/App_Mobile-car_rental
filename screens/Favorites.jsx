@@ -11,48 +11,46 @@ export default function Favorites() {
   const DataFavorites = useSelector((state) => state.Favorites);
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Favorites</Text>
-          <View style={styles.notification}>
-            <MaterialIcons name="notifications-none" size={27} color="gray" />
-          </View>
-        </View>
-        <View>
-          <SearchCar />
-        </View>
-        <View style={styles.listContainer}>
-          <FlashList
-            data={DataFavorites}
-            renderItem={({ item }) => (
-              <CardCar
-                brand={item.brand}
-                image={item.image}
-                price={item.price}
-                model={item.model}
-                year={item.year}
-                transmission={item.transmission}
-                seats={item.seats}
-                doors={item.doors}
-                fuelType={item.fuelType}
-                rating={item.rating}
-                description={item.description}
-                images={item.images}
-              />
-            )}
-            keyExtractor={(item, index) => index.toString()}
-            estimatedItemSize={200}
-            ListEmptyComponent={
-              <Text style={styles.emptyText}>No favorites yet</Text>
-            }
-          />
-        </View>
-        <View style={{ height: 60 }}>
-          <NavBar />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Favorites</Text>
+        <View style={styles.notification}>
+          <MaterialIcons name="notifications-none" size={27} color="gray" />
         </View>
       </View>
-    </TouchableWithoutFeedback>
+      <View>
+        <SearchCar />
+      </View>
+      <View style={styles.listContainer}>
+        <FlashList
+          data={DataFavorites}
+          renderItem={({ item }) => (
+            <CardCar
+              brand={item.brand}
+              image={item.image}
+              price={item.price}
+              model={item.model}
+              year={item.year}
+              transmission={item.transmission}
+              seats={item.seats}
+              doors={item.doors}
+              fuelType={item.fuelType}
+              rating={item.rating}
+              description={item.description}
+              images={item.images}
+            />
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          estimatedItemSize={200}
+          ListEmptyComponent={
+            <Text style={styles.emptyText}>No favorites yet</Text>
+          }
+        />
+      </View>
+      <View style={{ height: 60 }}>
+        <NavBar />
+      </View>
+    </View>
   );
 }
 

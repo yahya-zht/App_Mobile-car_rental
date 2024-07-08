@@ -1,38 +1,41 @@
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
-  Keyboard,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
+import { FlashList } from "@shopify/flash-list";
 import SearchCar from "../components/SearchCar";
 import CardCar from "../components/CardCar";
 import NavBar from "../components/NavBar";
-import { useSelector } from "react-redux";
-import { FlashList } from "@shopify/flash-list";
 
-export default function Booking() {
+export default function Booking({ navigation }) {
   const DataBooking = useSelector((state) => state.Booking);
 
+  const handleBooking = () => {
+    // Handle booking action
+  };
+
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Booking</Text>
-          <View style={styles.notification}>
-            <MaterialIcons name="notifications-none" size={27} color="gray" />
-          </View>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Booking</Text>
+        <View style={styles.notification}>
+          <MaterialIcons name="notifications-none" size={27} color="gray" />
         </View>
-        <View>
-          <SearchCar />
-        </View>
+      </View>
+      <SearchCar />
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.listContainer}>
           <FlashList
             data={DataBooking}
             renderItem={({ item }) => (
               <CardCar
+                id={item.id}
                 brand={item.brand}
                 image={item.image}
                 price={item.price}
@@ -54,11 +57,19 @@ export default function Booking() {
             }
           />
         </View>
-        <View style={{ height: 60 }}>
-          <NavBar />
-        </View>
+      </ScrollView>
+      {DataBooking.length > 0 && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("BookingDate")}
+        >
+          <Text style={styles.buttonText}>Booking Now</Text>
+        </TouchableOpacity>
+      )}
+      <View style={{ height: 60 }}>
+        <NavBar />
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 }
 
@@ -66,12 +77,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#27262b",
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
+    paddingHorizontal: 15,
   },
   headerText: {
     color: "white",
@@ -81,13 +93,33 @@ const styles = StyleSheet.create({
   notification: {
     justifyContent: "center",
   },
-  listContainer: {
+  scrollContainer: {
     flex: 1,
+    paddingHorizontal: 15,
+  },
+  listContainer: {
+    flexGrow: 1,
+    paddingBottom: 70,
   },
   emptyText: {
     color: "white",
     fontSize: 16,
     textAlign: "center",
     marginTop: 20,
+  },
+  button: {
+    position: "absolute",
+    bottom: 65,
+    left: 20,
+    right: 20,
+    backgroundColor: "#c2fa00",
+    paddingVertical: 15,
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });

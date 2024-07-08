@@ -3,6 +3,7 @@ import {
   REMOVEFROMFavorites,
   ADDTOBooking,
   REMOVEFROMBooking,
+  REMOVEALLFROMBooking,
 } from "./Action";
 
 const initialState = {
@@ -13,7 +14,12 @@ const initialState = {
 const ReducerFavorites = (state = initialState, action) => {
   switch (action.type) {
     case ADDTOFavorites:
-      return { ...state, Favorites: [...state.Favorites, action.payload] };
+      if (
+        !state.Favorites.some((favorite) => favorite.id === action.payload.id)
+      ) {
+        return { ...state, Favorites: [...state.Favorites, action.payload] };
+      }
+      return state;
     case REMOVEFROMFavorites:
       const { idF } = action.payload;
       return {
@@ -21,12 +27,20 @@ const ReducerFavorites = (state = initialState, action) => {
         Favorites: state.Favorites.filter((item) => item.id !== idF),
       };
     case ADDTOBooking:
-      return { ...state, Booking: [...state.Booking, action.payload] };
+      if (!state.Booking.some((booking) => booking.id === action.payload.id)) {
+        return { ...state, Booking: [...state.Booking, action.payload] };
+      }
+      return state;
     case REMOVEFROMBooking:
       const { idB } = action.payload;
       return {
         ...state,
         Booking: state.Booking.filter((item) => item.id !== idB),
+      };
+    case REMOVEALLFROMBooking:
+      return {
+        ...state,
+        Booking: [],
       };
     default:
       return state;

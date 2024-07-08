@@ -108,7 +108,7 @@ export default function CarDetails({ route, navigation }) {
         </View>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleAddTOBooking}>
-        <Text style={styles.buttonText}>Book Now</Text>
+        <Text style={styles.buttonText}>Booking Car</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -9,19 +8,42 @@ import SignUp from "../screens/SignUp";
 import Booking from "../screens/Booking";
 import Profile from "../screens/Profile";
 import CarDetails from "../screens/CarDetails";
+import Payment from "../screens/Payment";
+import BookingDate from "../screens/BookingDate";
 
 export default function Router() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
           // animation: "none",
           animationEnabled: false,
         }}
       >
+        <Stack.Screen
+          name="BookingDate"
+          component={BookingDate}
+          options={{
+            title: "BookingDate",
+          }}
+        />
+        <Stack.Screen
+          name="Payment"
+          component={Payment}
+          options={{
+            title: "Payment",
+          }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: "Login",
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -36,13 +58,7 @@ export default function Router() {
             title: "Favorites",
           }}
         />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: "Login",
-          }}
-        />
+
         <Stack.Screen
           name="SignUp"
           component={SignUp}
