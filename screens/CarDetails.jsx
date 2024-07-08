@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   AddToBooking,
   ADDTOFavorites,
@@ -21,6 +21,7 @@ const { width: viewportWidth } = Dimensions.get("window");
 export default function CarDetails({ route, navigation }) {
   const dispatch = useDispatch();
   const { CarData } = route.params;
+  console.log("CarData => ", CarData);
   const handleAddTOFavorites = () => {
     dispatch(AddToFavorites(CarData));
     alert("Car added to favorites");
@@ -58,16 +59,18 @@ export default function CarDetails({ route, navigation }) {
           <AntDesign name="hearto" size={30} color="white" />
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={carImages}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        snapToAlignment="center"
-        decelerationRate="fast"
-      />
+      <View style={{}}>
+        <FlatList
+          data={carImages}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          snapToAlignment="center"
+          decelerationRate="fast"
+        />
+      </View>
       <View style={styles.thumbnailContainer}>
         <FlatList
           data={carImages}
@@ -142,6 +145,7 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     padding: 20,
+    flex: 1,
   },
   title: {
     color: "white",

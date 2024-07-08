@@ -18,7 +18,8 @@ export default function Router() {
         initialRouteName="Home"
         screenOptions={{
           headerShown: false,
-          animation: "none",
+          // animation: "none",
+          animationEnabled: false,
         }}
       >
         <Stack.Screen

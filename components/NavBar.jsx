@@ -1,11 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import { AntDesign } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 export default function NavBar() {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const getColor = (screen) => (route.name === screen ? "#c2fa00" : "gray");
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -13,8 +16,10 @@ export default function NavBar() {
         onPress={() => navigation.navigate("Home")}
       >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <AntDesign name="home" size={24} color="#c2fa00" />
-          <Text style={{ color: "#c2fa00", fontWeight: "bold" }}>Home</Text>
+          <AntDesign name="home" size={24} color={getColor("Home")} />
+          <Text style={{ color: getColor("Home"), fontWeight: "bold" }}>
+            Home
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -22,8 +27,10 @@ export default function NavBar() {
         onPress={() => navigation.navigate("Favorites")}
       >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <AntDesign name="hearto" size={24} color="gray" />
-          <Text style={{ color: "gray", fontWeight: "bold" }}>Favorites</Text>
+          <AntDesign name="hearto" size={24} color={getColor("Favorites")} />
+          <Text style={{ color: getColor("Favorites"), fontWeight: "bold" }}>
+            Favorites
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -31,8 +38,14 @@ export default function NavBar() {
         onPress={() => navigation.navigate("Booking")}
       >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <MaterialIcons name="date-range" size={24} color="gray" />
-          <Text style={{ color: "gray", fontWeight: "bold" }}>booking</Text>
+          <MaterialIcons
+            name="date-range"
+            size={24}
+            color={getColor("Booking")}
+          />
+          <Text style={{ color: getColor("Booking"), fontWeight: "bold" }}>
+            Booking
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -40,8 +53,10 @@ export default function NavBar() {
         onPress={() => navigation.navigate("Profile")}
       >
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <Feather name="user" size={24} color="gray" />
-          <Text style={{ color: "gray", fontWeight: "bold" }}>Profile</Text>
+          <Feather name="user" size={24} color={getColor("Profile")} />
+          <Text style={{ color: getColor("Profile"), fontWeight: "bold" }}>
+            Profile
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -50,7 +65,6 @@ export default function NavBar() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 10,

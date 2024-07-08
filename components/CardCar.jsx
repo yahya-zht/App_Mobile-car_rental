@@ -6,10 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function CardCar(props) {
   const navigation = useNavigation();
   const CarData = props;
-
   const pressHandler = () => {
-    // console.log("props => ", props);
-    // console.log("CarData => ", CarData);
     navigation.navigate("CarDetails", { CarData });
   };
   return (
