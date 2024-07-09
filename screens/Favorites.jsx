@@ -18,7 +18,7 @@ export default function Favorites() {
   const handleSearch = (text) => {
     setSearchTerm(text);
     if (text === "") {
-      setFilteredFavorites(DataFavorites); // Reset to original data if search term is empty
+      setFilteredFavorites(DataFavorites);
     } else {
       const filtered = DataFavorites.filter(
         (item) =>

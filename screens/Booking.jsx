@@ -21,14 +21,10 @@ export default function Booking({ navigation }) {
   useEffect(() => {
     setFilteredBooking(DataBooking);
   }, [DataBooking]);
-  const handleBooking = () => {
-    // Handle booking action
-  };
-
   const handleSearch = (text) => {
     setSearchTerm(text);
     if (text === "") {
-      setFilteredBooking(DataBooking); // Reset to original data if search term is empty
+      setFilteredBooking(DataBooking);
     } else {
       const filtered = DataBooking.filter(
         (item) =>

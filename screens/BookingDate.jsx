@@ -30,7 +30,6 @@ const BookingDate = ({ navigation }) => {
     }
     if (dateFin) {
       markedDates[dateFin] = { selected: true, selectedColor: "#9bff00" };
-      // Mark all dates between dateDepart and dateFin
       let current = moment(dateDepart).add(1, "day");
       while (current.isBefore(moment(dateFin))) {
         markedDates[current.format("YYYY-MM-DD")] = {

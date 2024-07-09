@@ -35,8 +35,8 @@ const Date = [
     image: ferrari,
   },
   {
-    NameBrand: "Vog",
-    logo: "golf",
+    NameBrand: "Volkswagen",
+    logo: "Volkswagen",
     image: golf,
   },
   {
@@ -45,38 +45,47 @@ const Date = [
     image: jaguar,
   },
   {
-    logo: "lambo",
+    NameBrand: "Lamborghini",
+    logo: "Lamborghini",
     image: lambo,
   },
   {
+    NameBrand: "Mazda",
     logo: "Mazda",
     image: Mazda,
   },
   {
+    NameBrand: "mercedes",
     logo: "mercedes",
     image: mercedes,
   },
   {
+    NameBrand: "mini",
     logo: "mini cooper",
     image: miniCooper,
   },
   {
+    NameBrand: "Nissan",
     logo: "Nissan",
     image: Nissan,
   },
   {
+    NameBrand: "opel",
     logo: "opel",
     image: opel,
   },
   {
+    NameBrand: "skoda",
     logo: "skoda",
     image: skoda,
   },
   {
+    NameBrand: "toyota",
     logo: "toyota",
     image: toyota,
   },
   {
+    NameBrand: "volvo",
     logo: "volvo",
     image: volvo,
   },
