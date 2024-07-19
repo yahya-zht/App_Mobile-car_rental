@@ -10,12 +10,8 @@ import {
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { connect, useDispatch } from "react-redux";
-import {
-  AddToBooking,
-  ADDTOFavorites,
-  AddToFavorites,
-} from "../reducers/Action";
+import { useDispatch } from "react-redux";
+import { AddToBooking, AddToFavorites } from "../reducers/Action";
 const { width: viewportWidth } = Dimensions.get("window");
 
 export default function CarDetails({ route, navigation }) {

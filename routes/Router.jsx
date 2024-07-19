@@ -19,7 +19,6 @@ export default function Router() {
         initialRouteName="Login"
         screenOptions={{
           headerShown: false,
-          // animation: "none",
           animationEnabled: false,
         }}
       >
